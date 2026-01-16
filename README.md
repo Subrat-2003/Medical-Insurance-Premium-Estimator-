@@ -1,30 +1,55 @@
 # Medical Insurance Cost Prediction
+### 📋 Project Overview
+This project focuses on predicting individual medical insurance premiums using patient demographic and health data. By benchmarking **8 different Machine Learning algorithms**, the project identifies the most accurate regression model to estimate healthcare costs, offering a data-driven approach to premium calculation.
 
-This project performs a comprehensive analysis of health insurance data to predict the medical charges for individuals based on various demographic and health-related features. 
+### 🎯 Objective
+To engineer a robust regression pipeline that processes patient data and predicts insurance costs with high accuracy, optimizing over a baseline Linear Regression model.
 
-## 📊 Project Overview
-The goal of this analysis is to identify the key factors that influence insurance premiums and build a predictive model to estimate costs accurately. The notebook includes data cleaning, exploratory data analysis (EDA), and machine learning model implementation.
+### 📊 Dataset
+* **Records:** 1,338 patients
+* **Features:** Age, Sex, BMI, Children, Smoker, Region, Charges
 
-## 📂 Dataset Information
-The dataset consists of **1,338 records** with the following features:
-- **Age**: Age of the primary beneficiary.
-- **Sex**: Insurance contractor gender (female, male).
-- **BMI**: Body Mass Index, providing an understanding of body weight relative to height.
-- **Children**: Number of children covered by health insurance / Number of dependents.
-- **Smoker**: Smoking status (yes, no).
-- **Region**: The beneficiary's residential area in the US.
-- **Charges (Target)**: Individual medical costs billed by health insurance.
+### 🛠️ Tech Stack
+* **Language:** Python
+* **Libraries:** Pandas, NumPy, Matplotlib, Seaborn, XGBoost
+* **Techniques:** Regression Analysis, Feature Engineering, Outlier Detection
 
-## 🛠️ Tech Stack
-- **Language**: Python
-- **Libraries**: Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, XGBoost.
+### ⚙️ Methodology
 
-## 📈 Key Findings & Results
-- **Data Integrity**: The dataset contained no missing values (NaNs), ensuring a clean start for the analysis.
-- **Modeling**: Several regression models were tested, including XGBoost.
-- **Performance**: The best-performing model achieved an accuracy score of approximately **0.81** (R-squared), indicating strong predictive power.
+1.  **Data Preprocessing:**
+    * Handled missing values and verified data integrity.
+    * **Outlier Treatment:** Applied **Interquartile Range (IQR) capping** to neutralize extreme values in `BMI` and `Charges`, ensuring model stability.
+    * **Feature Engineering:** Implemented **One-Hot Encoding** for categorical variables (`Region`, `Sex`, `Smoker`) to convert qualitative data into machine-readable format.
 
-## 🚀 How to Run
-1. Clone this repository:
-   ```bash
-   git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
+2.  **Model Benchmarking:**
+    * Evaluated 8 algorithms: Linear Regression, Decision Tree, Random Forest, SVR, KNN, AdaBoost, Gradient Boosting, and XGBoost.
+    * Used **$R^2$ Score** as the primary evaluation metric.
+
+### 📈 Model Performance
+The analysis revealed that ensemble methods significantly outperformed linear models due to non-linear relationships in the data (e.g., the compounding cost impact of smoking).
+
+| Model | $R^2$ Score | Performance |
+| :--- | :--- | :--- |
+| **Gradient Boosting Regressor** | **87.8%** | **🏆 Best Model** |
+| Random Forest Regressor | ~85.0% | Strong Contender |
+| XGBoost Regressor | ~81.0% | Good |
+| **Linear Regression (Baseline)** | **77.1%** | Baseline |
+
+### 💡 Key Insights
+* **Gradient Boosting** achieved the highest accuracy (**87.8%**), providing a **~10% performance uplift** over the baseline Linear Regression model.
+* **Smoking status** was identified as the strongest predictor of high insurance charges, introducing non-linearity that simple linear models struggled to capture effectively.
+* **IQR Capping** was crucial for reducing the Mean Squared Error (MSE) by preventing outlier premiums from skewing the prediction line.
+
+### 🚀 How to Run
+1.  Clone the repository:
+    ```bash
+    git clone [https://github.com/yourusername/medical-premium-estimator.git](https://github.com/yourusername/medical-premium-estimator.git)
+    ```
+2.  Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+3.  Run the notebook:
+    ```bash
+    jupyter notebook Insurance_Analysis.ipynb
+    ```
