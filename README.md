@@ -34,7 +34,7 @@ To engineer a robust regression pipeline that processes patient data and predict
 ### 2. Model Benchmarking (The Tournament)
 I evaluated 8 distinct algorithms to identify the best architecture for capturing the non-linear complexities of medical data:
 
-| Algorithm | R² Score (Initial) |
+| Algorithm | Accuracy |
 | :--- | :--- |
 | **Gradient Boosting Regressor** | **87.78%** |
 | Random Forest Regressor | 84.85% |
